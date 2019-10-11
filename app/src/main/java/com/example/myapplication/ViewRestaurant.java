@@ -11,9 +11,10 @@ public class ViewRestaurant {
     public String foto;
     public String rut_a;
     public int id_horario;
+    public int discapacitados;
 
 
-    public ViewRestaurant(int id_restaurante, String nombre, String direccion,int telefono,int valoracion_r,String tipo_r, String foto,String rut_a,int id_horario) {
+    public ViewRestaurant(int id_restaurante, String nombre, String direccion,int telefono,int valoracion_r,String tipo_r, String foto,String rut_a,int id_horario, int discapacitados) {
         this.id_restaurante = id_restaurante;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -23,6 +24,7 @@ public class ViewRestaurant {
         this.foto = foto;
         this.rut_a = rut_a;
         this.id_horario = id_horario;
+        this.discapacitados = discapacitados;
     }
 
     public ViewRestaurant() {
@@ -47,6 +49,9 @@ public class ViewRestaurant {
     public String getRut_a() { return rut_a; }
     public Integer getid_horario() {
         return id_horario;
+    }
+    public Integer getDiscapacitados() {
+        return discapacitados;
     }
 
 

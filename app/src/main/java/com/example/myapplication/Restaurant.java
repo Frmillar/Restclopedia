@@ -13,6 +13,7 @@ public class Restaurant implements KvmSerializable {
     public String foto;
     public String rut_a;
     public int id_horario;
+    public int discapacitados;
 
     public Restaurant() {
         id_restaurante = 0;
@@ -24,9 +25,10 @@ public class Restaurant implements KvmSerializable {
         foto = "";
         rut_a ="";
         id_horario=0;
+        discapacitados=0;
     }
 
-    public Restaurant(int id_restaurante, String nombre, String direccion,int telefono,int valoracion_r,String tipo_r, String foto,String rut_a,int id_horario) {
+    public Restaurant(int id_restaurante, String nombre, String direccion,int telefono,int valoracion_r,String tipo_r, String foto,String rut_a,int id_horario, int discapacitados) {
         this.id_restaurante = id_restaurante;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -35,6 +37,7 @@ public class Restaurant implements KvmSerializable {
         this.tipo_r = tipo_r;
         this.rut_a = rut_a;
         this.id_horario = id_horario;
+        this.discapacitados = discapacitados;
     }
 
     @Override
@@ -58,6 +61,8 @@ public class Restaurant implements KvmSerializable {
                 return rut_a;
             case 8:
                 return id_horario;
+            case 9:
+                return discapacitados;
         }
 
         return null;
@@ -107,6 +112,10 @@ public class Restaurant implements KvmSerializable {
                 info.type = PropertyInfo.INTEGER_CLASS;
                 info.name = "id_horario";
                 break;
+            case 9:
+                info.type = PropertyInfo.INTEGER_CLASS;
+                info.name = "discapacitados";
+                break;
             default:
                 break;
         }
@@ -141,6 +150,9 @@ public class Restaurant implements KvmSerializable {
                 break;
             case 8:
                 id_horario = Integer.parseInt(val.toString());
+                break;
+            case 9:
+                discapacitados = Integer.parseInt(val.toString());
                 break;
 
             default:

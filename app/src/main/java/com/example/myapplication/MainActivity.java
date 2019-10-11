@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.*;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -46,12 +47,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        txtNombre = findViewById(R.id.txtNombre);
-        txtTelefono = findViewById(R.id.txtTelefono);
-        txtResultado = findViewById(R.id.txtResultado);
-        btnEnviar = findViewById(R.id.btnEnviar);
-        btnEnviar2 = findViewById(R.id.btnEnviar2);
-        btnConsultar = findViewById(R.id.btnConsultar);
+
         lstClientes = findViewById(R.id.customListView);
 
         btnEnviar.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 tarea.execute();
             }
         });
+
+        TareaWSConsulta tarea = new TareaWSConsulta();
+        tarea.execute();
 /*
         btnEnviar2.setOnClickListener(new View.OnClickListener() {
 
@@ -76,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                TareaWSConsulta tarea = new TareaWSConsulta();
-                tarea.execute();
+
             }
         });
     }
@@ -153,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                     re.foto = ic.getProperty(6).toString();
                     re.rut_a = ic.getProperty(7).toString();
                     re.id_horario = Integer.parseInt(ic.getProperty(8).toString());
+                    re.discapacitados = Integer.parseInt(ic.getProperty(9).toString());
 
                     listaRestaurant[i] = re;
                 }
@@ -185,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (int i = 0; i < listaRestaurant.length; i++)
                 {
-                    datos.add(new ViewRestaurant(listaRestaurant[i].id_restaurante, listaRestaurant[i].nombre, listaRestaurant[i].direccion, listaRestaurant[i].telefono, listaRestaurant[i].valoracion_r, listaRestaurant[i].tipo_r, listaRestaurant[i].foto, listaRestaurant[i].rut_a, listaRestaurant[i].id_horario));
+                    datos.add(new ViewRestaurant(listaRestaurant[i].id_restaurante, listaRestaurant[i].nombre, listaRestaurant[i].direccion, listaRestaurant[i].telefono, listaRestaurant[i].valoracion_r, listaRestaurant[i].tipo_r, listaRestaurant[i].foto, listaRestaurant[i].rut_a, listaRestaurant[i].id_horario, listaRestaurant[i].discapacitados));
                 }
 
 
@@ -240,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
 
         private Cliente[] listaClientes;
 
+        @SuppressLint("WrongThread")
         protected Boolean doInBackground(String... params) {
 
             boolean resul = true;
@@ -305,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
 
         private Cliente[] listaClientes;
 
+        @SuppressLint("WrongThread")
         protected Boolean doInBackground(String... params) {
 
             boolean resul = true;

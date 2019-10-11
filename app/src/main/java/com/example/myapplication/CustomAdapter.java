@@ -36,6 +36,7 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
             holder.lblNombre = rowView.findViewById(R.id.nombre);
             holder.lblDireccion = rowView.findViewById(R.id.direccion);
             holder.lblTelefono = rowView.findViewById(R.id.telefono);
+            holder.lblDiscapacitados = rowView.findViewById(R.id.discapacitados);
 
             rowView.setTag(holder);
 
@@ -45,9 +46,21 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
 
         item = values.get(position);
 
+        String discap ="";
+
+        if(item.getDiscapacitados() == 0)
+        {
+            discap = "Acceso discapacitados: No";
+        }
+        else
+        {
+            discap = "Acceso discapacitados: Sí";
+        }
+
         holder.lblNombre.setText(item.getNombre());
         holder.lblDireccion.setText(item.getdireccion());
         holder.lblTelefono.setText(String.valueOf(item.getTelefono()));
+        holder.lblDiscapacitados.setText(discap);
 
         return rowView;
     }
@@ -56,6 +69,7 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
         TextView lblNombre;
         TextView lblDireccion;
         TextView lblTelefono;
+        TextView lblDiscapacitados;
         View v;
         public ViewHolder(View v) {
             this.v = v;

@@ -43,6 +43,13 @@
             android:layout_marginBottom="10dp"
             android:text="tel"
             android:textSize="15sp" />
+        <TextView
+            android:id="@+id/discapacitados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="disc"
+            android:textSize="15sp" />
     </LinearLayout>
 
 

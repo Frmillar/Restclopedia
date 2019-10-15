@@ -15,7 +15,7 @@ import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.ArrayList;
 
-
+//Pantalla principal de la aplicación, en este prototipo tiene la función de mostrar la información de los restaurantes registrados en la base de datos.
 public class MainActivity extends AppCompatActivity {
 
     private EditText txtNombre;
@@ -105,15 +105,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    // Clase interna de la Activity que hace las consultas al Webservice para extraer los datos de los restaurantes registrados.
     private class TareaWSConsulta extends AsyncTask<String,Integer,Boolean> {
-
+        // Se crea una lista que tendrá objetos de clase restaurante
         private Restaurant[] listaRestaurant;
 
         protected Boolean doInBackground(String... params) {
 
             boolean resul = true;
-
+            // Se fijan los parámetros del webservice
             final String NAMESPACE = "http://tempuri.org/";
             final String URL="https://webapplication2-qj7.conveyor.cloud/WebService1.asmx";
             final String METHOD_NAME = "ListaRestaurant";
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             envelope.setOutputSoapObject(request);
 
             HttpTransportSE transporte = new HttpTransportSE(URL);
-
+            // Si se recibe una respuesta, se guardan los datos de los restaurantes en la lista
             try
             {
                 transporte.call(SOAP_ACTION, envelope);
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
             return resul;
         }
-
+        // Luego de recibir los datos se pasan a objetos ViewRestaurant y estos se guardan en un ArrayList, que luego será usado por un CustomAdapter para mostrarlos como una lista en la interfaz
         protected void onPostExecute(Boolean result) {
 
             if (result)

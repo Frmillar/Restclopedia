@@ -5,14 +5,7 @@
     android:orientation="vertical"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
-    C:\Users\Gonzalo\AndroidStudioProjects\MyApplication\app\src\main\res\mipmap-hdpi\ic_launcher.png
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginRight="10dp"
-        android:contentDescription="Property Image"
-        android:src="@mipmap/ic_launcher"/>
+
 
     <LinearLayout
         android:id="@+id/infoSection"
@@ -22,43 +15,66 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/idrestaurante"
+            android:id="@+id/id_infon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="id"
-            android:textSize="18sp" />
-             />
-
-        <TextView
-            android:id="@+id/nombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="nom"
+            android:text="id_plato"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/telefono"
+            android:id="@+id/kcal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="dir"
+            android:text="kcal"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/g_totales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="g_totales"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/g_saturadas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="g_saturadas"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/proteina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="proteina"
             android:textSize="15sp" />
         <TextView
-            android:id="@+id/direccion"
+            android:id="@+id/sal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="tel"
+            android:text="sal"
             android:textSize="15sp" />
         <TextView
-            android:id="@+id/discapacitados"
+            android:id="@+id/h_carbono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="disc"
+            android:text="h_carbono"
             android:textSize="15sp" />
+        <TextView
+            android:id="@+id/azucar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="azucar"
+            android:textSize="15sp" />
+
     </LinearLayout>
 
 

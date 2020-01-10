@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".PlatosActivity" >
+
+
+    <TextView
+        android:id="@+id/txtIngredientesTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:text="Ingredientes"
+        android:textSize="20sp" />
+    />
+
+<TextView
+    android:id="@+id/ListIngredientes"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="50dp"
+    android:text="Lista de ingredientes"
+    android:textSize="15sp" />
+/>
+
+    <TextView
+        android:id="@+id/InfoNutriTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="100dp"
+        android:text="Información nutricional"
+        android:textSize="20sp" />
+    />
+
+<ListView
+    android:id="@+id/nutriListView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="140dp">
+</ListView>
+
+
+
+</RelativeLayout>

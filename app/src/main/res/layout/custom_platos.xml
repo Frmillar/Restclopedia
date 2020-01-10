@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
-    C:\Users\Gonzalo\AndroidStudioProjects\MyApplication\app\src\main\res\mipmap-hdpi\ic_launcher.png
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="100dp"
@@ -22,43 +22,52 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/idrestaurante"
+            android:id="@+id/id_plato_plato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="id"
+            android:text="id_plato"
             android:textSize="18sp" />
-             />
 
         <TextView
-            android:id="@+id/nombre"
+            android:id="@+id/id_restaurante_plato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="id_restaurante"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/nombre_plato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="nom"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/telefono"
+            android:id="@+id/valor_plato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="dir"
+            android:text="valor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/descripcion_plato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="desc"
             android:textSize="15sp" />
         <TextView
-            android:id="@+id/direccion"
+            android:id="@+id/tipo_plato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="tel"
+            android:text="tipo"
             android:textSize="15sp" />
-        <TextView
-            android:id="@+id/discapacitados"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="disc"
-            android:textSize="15sp" />
+
     </LinearLayout>
 
 

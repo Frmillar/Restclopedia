@@ -31,7 +31,7 @@ public class ViewRestaurant {
         // TODO Auto-generated constructor stub
     }
 
-    public Integer getid_restaurante() {
+    public Integer getID_restaurante() {
         return id_restaurante;
     }
     public String getNombre() { return nombre; }

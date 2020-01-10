@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.*;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,12 +29,22 @@ public class MainActivity extends AppCompatActivity {
     private ListView listaRestaurant1;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (Build.VERSION.SDK_INT < 16) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+
+        
+        setContentView(R.layout.activity_main);
 
         listaRestaurant1 = (ListView) findViewById(R.id.customListView);
 
@@ -47,17 +58,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         lstClientes = findViewById(R.id.customListView);
 
-        btnEnviar.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                TareaWSInsercion1 tarea = new TareaWSInsercion1();
-                tarea.execute();
-            }
-        });
 
         TareaWSConsulta tarea = new TareaWSConsulta();
         tarea.execute();
@@ -71,13 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 */
-        btnConsultar.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
 
@@ -112,10 +110,16 @@ public class MainActivity extends AppCompatActivity {
 
         protected Boolean doInBackground(String... params) {
 
+
+
             boolean resul = true;
 
+            try
+            {
+
             final String NAMESPACE = "http://tempuri.org/";
-            final String URL="https://webapplication2-qj7.conveyor.cloud/WebService1.asmx";
+            //final String URL="https://webapplication2-qj7.conveyor.cloud/WebService1.asmx";
+            final String URL="http://192.168.0.2:8083/WebService1.asmx";
             final String METHOD_NAME = "ListaRestaurant";
             final String SOAP_ACTION = "http://tempuri.org/ListaRestaurant";
 
@@ -129,8 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
             HttpTransportSE transporte = new HttpTransportSE(URL);
 
-            try
-            {
+
                 transporte.call(SOAP_ACTION, envelope);
 
                 SoapObject resSoap =(SoapObject)envelope.getResponse();

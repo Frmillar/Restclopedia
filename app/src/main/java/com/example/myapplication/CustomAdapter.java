@@ -2,11 +2,13 @@ package com.example.myapplication;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,6 +18,7 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
 
     ViewRestaurant item;
     private View v;
+    Integer varID;
 
     public CustomAdapter(Context context, ArrayList<ViewRestaurant> datos) {
         super(context, R.layout.custom, datos);
@@ -25,6 +28,8 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
 
         View rowView = convertView;
         ViewHolder holder = new ViewHolder(rowView);
@@ -37,6 +42,7 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
             holder.lblDireccion = rowView.findViewById(R.id.direccion);
             holder.lblTelefono = rowView.findViewById(R.id.telefono);
             holder.lblDiscapacitados = rowView.findViewById(R.id.discapacitados);
+            holder.lblIDrestaurante = rowView.findViewById(R.id.idrestaurante);
 
             rowView.setTag(holder);
 
@@ -57,10 +63,61 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
             discap = "Acceso discapacitados: Sí";
         }
 
+
+        holder.lblIDrestaurante.setText(String.valueOf(item.getID_restaurante()));
         holder.lblNombre.setText(item.getNombre());
         holder.lblDireccion.setText(item.getdireccion());
         holder.lblTelefono.setText(String.valueOf(item.getTelefono()));
         holder.lblDiscapacitados.setText(discap);
+
+
+        varID = item.getID_restaurante();
+
+
+
+//*********************
+
+        holder.lblNombre.setTag(holder);
+
+        holder.lblNombre.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                //ViewHolder holder2 = (ViewHolder)v.getTag();
+                //varID = Integer.parseInt(holder2.lblIDrestaurante.getText().toString());
+
+                //Intent i = new Intent(v.getContext(),PlatosActivity.class);
+                //i.putExtra("id_restaurante", varID.toString());
+
+                //v.getContext().startActivity(i);
+
+
+
+                try
+                {
+
+                    Intent intent = new Intent(context,  PlatosActivity.class);
+                    intent.putExtra("id_restaurante", varID.toString());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+
+                }
+                catch (Exception e)
+                {
+
+                    Toast toast1 =
+
+                            Toast.makeText(context.getApplicationContext(),
+                                    e.toString(), Toast.LENGTH_LONG);
+                    toast1.show();
+
+                }
+
+            }
+
+        });
+
 
         return rowView;
     }
@@ -70,9 +127,22 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
         TextView lblDireccion;
         TextView lblTelefono;
         TextView lblDiscapacitados;
+
+        TextView lblIDrestaurante;
+
+        private TextView button;
+
         View v;
         public ViewHolder(View v) {
             this.v = v;
+        }
+        public TextView getButton()
+        {
+            if (button == null)
+            {
+                button = (TextView) v.findViewById(R.id.nombre);
+            }
+            return (button);
         }
     }
 

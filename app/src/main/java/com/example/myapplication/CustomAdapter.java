@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+// Clase utilizada para guardar los datos de los restaurantes y mostrar su información relevante a través de la interfaz
 public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
     private final Context context;
     private final ArrayList<ViewRestaurant> values;

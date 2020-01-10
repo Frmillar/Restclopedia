@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+// Actividad que servirá de pantalla inicial para verificar la identificación del usuario que quiere ingresar a la aplicación, por ahora solo muestra los campos a rellenar y un boton para ingresar pero no se verifica el usuario.
 public class LoginActivity extends AppCompatActivity {
 
     @Override

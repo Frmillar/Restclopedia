@@ -1,5 +1,5 @@
 package com.example.myapplication;
-
+// Clase usada para almacenar los datos de los restaurantes mientras se ejecuta la aplicación
 public class ViewRestaurant {
 
     public int id_restaurante;

@@ -3,6 +3,8 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 
+
+// Clase utilizada para guardar los datos de cada restaurante recibidos del webservice
 public class Restaurant implements KvmSerializable {
     public int id_restaurante;
     public String nombre;

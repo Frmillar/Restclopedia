@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="clickear"
     android:orientation="vertical"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
     C:\Users\Gonzalo\AndroidStudioProjects\MyApplication\app\src\main\res\mipmap-hdpi\ic_launcher.png
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginRight="10dp"
         android:contentDescription="Property Image"
-        android:src="@mipmap/ic_launcher"/>
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <LinearLayout
         android:id="@+id/infoSection"
@@ -36,6 +39,7 @@
             android:layout_marginBottom="10dp"
             android:text="dir"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/direccion"
             android:layout_width="match_parent"
@@ -43,6 +47,7 @@
             android:layout_marginBottom="10dp"
             android:text="tel"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/discapacitados"
             android:layout_width="match_parent"
@@ -51,7 +56,6 @@
             android:text="disc"
             android:textSize="15sp" />
     </LinearLayout>
-
 
 
 </RelativeLayout>

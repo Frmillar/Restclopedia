@@ -6,22 +6,28 @@ import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 
 public class Cliente implements KvmSerializable {
-    public int id;
+    public String rut;
     public String nombre;
-    public String  telefono;
+    public String  apellido;
+    public String  mail;
+    public String  contraseña;
 
     public Cliente()
     {
-        id = 0;
+        rut = "";
         nombre = "";
-        telefono = "";
+        apellido = "";
+        mail = "";
+        contraseña = "";
     }
 
-    public Cliente(int id, String nombre, String  telefono)
+    public Cliente(String rut, String nombre, String  apellido, String mail, String contraseña)
     {
-        this.id = id;
+        this.rut = rut;
         this.nombre = nombre;
-        this.telefono = telefono;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.contraseña = contraseña;
     }
 
     @Override
@@ -30,11 +36,11 @@ public class Cliente implements KvmSerializable {
         switch(arg0)
         {
             case 0:
-                return id;
+                return rut;
             case 1:
                 return nombre;
             case 2:
-                return telefono;
+                return apellido;
         }
 
         return null;
@@ -42,7 +48,7 @@ public class Cliente implements KvmSerializable {
 
     @Override
     public int getPropertyCount() {
-        return 3;
+        return 5;
     }
 
     @Override
@@ -59,7 +65,7 @@ public class Cliente implements KvmSerializable {
                 break;
             case 2:
                 info.type = PropertyInfo.STRING_CLASS;
-                info.name = "Telefono";
+                info.name = "apellido";
                 break;
             default:break;
         }
@@ -70,13 +76,13 @@ public class Cliente implements KvmSerializable {
         switch(ind)
         {
             case 0:
-                id = Integer.parseInt(val.toString());
+                rut = val.toString();
                 break;
             case 1:
                 nombre = val.toString();
                 break;
             case 2:
-                telefono = val.toString();
+                apellido = val.toString();
                 break;
             default:
                 break;

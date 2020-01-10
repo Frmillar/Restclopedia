@@ -1,12 +1,21 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.*;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.view.*;
 import org.ksoap2.SoapEnvelope;
 import android.os.AsyncTask;
@@ -16,7 +25,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.util.ArrayList;
 
 //Pantalla principal de la aplicación, en este prototipo tiene la función de mostrar la información de los restaurantes registrados en la base de datos.
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private EditText txtNombre;
     private EditText txtTelefono;
@@ -26,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btnConsultar;
     private ListView lstClientes;
     private ListView listaRestaurant1;
+    private TextView HeaderPasajero_username;
+    private TextView HeaderPasajero_nombre;
+    private ImageView HeaderPasajero_foto;
 
 
     @Override
@@ -37,27 +49,25 @@ public class MainActivity extends AppCompatActivity {
 
         listaRestaurant1 = (ListView) findViewById(R.id.customListView);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
+        View headView = navigationView.getHeaderView(0);
 
+        HeaderPasajero_nombre = (TextView)headView.findViewById(R.id.HeaderUser_username);
+        HeaderPasajero_username = (TextView)headView.findViewById(R.id.HeaderUser_nombre);
+        HeaderPasajero_foto = (ImageView)headView.findViewById(R.id.HeaderUser_foto);
+        HeaderPasajero_username.setText("Usuario");
+        HeaderPasajero_nombre.setText("Nombre");
+        HeaderPasajero_foto.setImageResource(R.drawable.user);
 
         lstClientes = findViewById(R.id.customListView);
 
-        btnEnviar.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                TareaWSInsercion1 tarea = new TareaWSInsercion1();
-                tarea.execute();
-            }
-        });
 
         TareaWSConsulta tarea = new TareaWSConsulta();
         tarea.execute();
@@ -71,13 +81,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 */
-        btnConsultar.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
 
@@ -94,14 +98,54 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+/*
+        if (id == R.id.PasajeroActivity_perfil){
+            Intent PerfilPasajeroActivity = new Intent(this, PerfilPasajeroActivity.class);
+            PerfilPasajeroActivity.putExtra("pasajero_entidad", pasajero);
+            startActivity(PerfilPasajeroActivity);
+        }
+        else if (id == R.id.PasajeroActivity_buscarviaje){
+            Intent BuscarViajeActivity = new Intent(this, BuscarViajeActivity.class);
+            BuscarViajeActivity.putExtra("pasajero_entidad", pasajero);
+            startActivity(BuscarViajeActivity);
+        }
+        else if (id == R.id.PasajeroActivity_verreservas) {
+            Intent MisReservasActivity = new Intent(this, MisReservasActivity.class);
+            MisReservasActivity.putExtra("pasajero_entidad", pasajero);
+            startActivity(MisReservasActivity);
+            //Toast.makeText(this, Integer.toString(DBQueries.getMisReservas(pasajero.getUsername(),this).size()),Toast.LENGTH_SHORT).show();
+        }
+        else if (id == R.id.PasajeroActivity_salir){
+            SharedPreferences sharedPreferences;
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("AutoLogin", false);
+            editor.apply();
+            Intent MainActivity = new Intent(this, com.example.carpulin.Activities.MainActivity.class);
+            startActivity(MainActivity);
+            this.finish();
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+        return true;
+ */
+        return false;
     }
 
 
@@ -115,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             boolean resul = true;
             // Se fijan los parámetros del webservice
             final String NAMESPACE = "http://tempuri.org/";
-            final String URL="https://webapplication2-qj7.conveyor.cloud/WebService1.asmx";
+            final String URL="https://webapplication-tb6.conveyor.cloud/WebService1.asmx";
             final String METHOD_NAME = "ListaRestaurant";
             final String SOAP_ACTION = "http://tempuri.org/ListaRestaurant";
 
@@ -216,6 +260,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void clickear(View view){
+        Intent RegisterActivity = new Intent(this, RegisterActivity.class);
+        startActivity(RegisterActivity);
+    }
 
 
 
@@ -232,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    /////////////
+    /*
 
 
     private class TareaWSInsercion1 extends AsyncTask<String,Integer,Boolean> {
@@ -365,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+*/
 
 }
 

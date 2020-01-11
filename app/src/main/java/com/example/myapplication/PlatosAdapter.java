@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class PlatosAdapter extends ArrayAdapter<ViewPlatos> {
 
     ViewPlatos item;
     private View v;
+    Integer varID;
 
     public PlatosAdapter(Context context, ArrayList<ViewPlatos> datos) {
         super(context, R.layout.custom_platos, datos);
@@ -57,6 +59,7 @@ public class PlatosAdapter extends ArrayAdapter<ViewPlatos> {
         holder.lbl_descripcion.setText(String.valueOf(item.getDescripcion()));
         holder.lbl_tipo.setText(item.getTipo());
 
+        varID = item.getid_plato();
 
 //*********************
 
@@ -66,13 +69,29 @@ public class PlatosAdapter extends ArrayAdapter<ViewPlatos> {
 
             @Override
             public void onClick(View v) {
-/*
-               // ingredientes/infonutri   *******************************
 
-                Intent myIntent = new Intent(v.getContext(),Platos.class);
-               // myIntent.putExtra("intVariableName", eventsList.get(position).getEvent_id());
-                v.getContext().startActivity(myIntent);
-*/
+
+
+                  try
+                {
+
+                    Intent intent = new Intent(context,  NutricionalActivity.class);
+                    intent.putExtra("id_plato", varID.toString());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+
+                }
+                catch (Exception e)
+                {
+
+                    Toast toast1 =
+
+                            Toast.makeText(context.getApplicationContext(),
+                                    e.toString(), Toast.LENGTH_LONG);
+                    toast1.show();
+
+                }
+
             }
 
         });

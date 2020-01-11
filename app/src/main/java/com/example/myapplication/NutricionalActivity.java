@@ -39,10 +39,10 @@ public class NutricionalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plato4);
+        setContentView(R.layout.activity_nutricional);
 
 
-        listaNutri1 = (ListView) findViewById(R.id.platosListView);
+        listaNutri1 = (ListView) findViewById(R.id.nutriListView);
 
         start();
 
@@ -54,7 +54,7 @@ public class NutricionalActivity extends AppCompatActivity {
         {
             bundle = this.getIntent().getExtras();
             // resp = bundle.getString("id_plato");
-            resp = "1";
+            resp = "2";
 
             ConsultaNutri tarea = new ConsultaNutri();
             tarea.execute();
@@ -196,16 +196,16 @@ public class NutricionalActivity extends AppCompatActivity {
                     */
 
 
-                    TextView tv = (TextView) findViewById(R.id.ListIngredientes);
-                   // tv.setText(s);
+                   TextView tv = (TextView) findViewById(R.id.ListIngredientes);
+                   tv.setText(ingredientes);
 
 
-
+/*
                     Toast toast1 =
                             Toast.makeText(getApplicationContext(),
                                     ingredientes.toString(), Toast.LENGTH_LONG);
                     toast1.show();
-
+*/
 
 
 

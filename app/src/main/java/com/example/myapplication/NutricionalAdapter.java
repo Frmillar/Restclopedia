@@ -53,14 +53,22 @@ public class NutricionalAdapter extends ArrayAdapter<ViewNutricional> {
 
         item = values.get(position);
 
+        String kcal = "Kal: " + item.getkcal();
+        String gtot = "Grasas totales: " + item.getg_totales();
+        String gsat = "Grasas saturadas: " + item.getg_saturadas();
+        String prot = "Protenias: " + item.getproteina();
+        String sal =  "Sal: " + item.getsal();
+        String hcar = "Hidratos de carbono: " + item.geth_carbono();
+        String azuc = "Azucar: " + item.getazucar();
+
         holder.lbl_id_infon.setText(String.valueOf(item.getid_infon()));
-        holder.lbl_kcal.setText(String.valueOf(item.getkcal()));
-        holder.lbl_g_totales.setText(String.valueOf(item.getg_totales()));
-        holder.lbl_g_saturadas.setText(item.getg_saturadas());
-        holder.lbl_proteina.setText(String.valueOf(item.getproteina()));
-        holder.lbl_sal.setText(item.getsal());
-        holder.lbl_h_carbono.setText(item.geth_carbono());
-        holder.lbl_azucar.setText(item.getazucar());
+        holder.lbl_kcal.setText(kcal);
+        holder.lbl_g_totales.setText(gtot);
+        holder.lbl_g_saturadas.setText(gsat);
+        holder.lbl_proteina.setText(prot);
+        holder.lbl_sal.setText(sal);
+        holder.lbl_h_carbono.setText(hcar);
+        holder.lbl_azucar.setText(azuc);
 
 
         return rowView;

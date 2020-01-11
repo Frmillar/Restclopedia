@@ -18,7 +18,7 @@ public class PlatosAdapter extends ArrayAdapter<ViewPlatos> {
 
     ViewPlatos item;
     private View v;
-    Integer varID;
+    String varID;
 
     public PlatosAdapter(Context context, ArrayList<ViewPlatos> datos) {
         super(context, R.layout.custom_platos, datos);
@@ -59,7 +59,7 @@ public class PlatosAdapter extends ArrayAdapter<ViewPlatos> {
         holder.lbl_descripcion.setText(String.valueOf(item.getDescripcion()));
         holder.lbl_tipo.setText(item.getTipo());
 
-        varID = item.getid_plato();
+        //varID = item.getid_plato();
 
 //*********************
 
@@ -74,11 +74,23 @@ public class PlatosAdapter extends ArrayAdapter<ViewPlatos> {
 
                   try
                 {
-
+/*
                     Intent intent = new Intent(context,  NutricionalActivity.class);
                     intent.putExtra("id_plato", varID.toString());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
+
+ */
+
+
+                    ViewHolder holder2 = (ViewHolder)v.getTag();
+                    varID = holder2.lbl_id_plato.getText().toString();
+
+                    Intent i = new Intent(v.getContext(),NutricionalActivity.class);
+                    i.putExtra("id_plato", varID);
+
+                    // i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    v.getContext().startActivity(i);
 
                 }
                 catch (Exception e)

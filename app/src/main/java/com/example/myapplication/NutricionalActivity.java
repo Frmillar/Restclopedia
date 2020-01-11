@@ -53,8 +53,8 @@ public class NutricionalActivity extends AppCompatActivity {
         try
         {
             bundle = this.getIntent().getExtras();
-            // resp = bundle.getString("id_plato");
-            resp = "2";
+             resp = bundle.getString("id_plato");
+           // resp = "2";
 
             ConsultaNutri tarea = new ConsultaNutri();
             tarea.execute();

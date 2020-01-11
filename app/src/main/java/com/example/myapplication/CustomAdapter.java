@@ -19,7 +19,7 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
 
     ViewRestaurant item;
     private View v;
-    Integer varID;
+    String varID;
 
     public CustomAdapter(Context context, ArrayList<ViewRestaurant> datos) {
         super(context, R.layout.custom, datos);
@@ -64,7 +64,7 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
             discap = "Acceso discapacitados: Sí";
         }
 
-
+        //varID = item.getID_restaurante();
         holder.lblIDrestaurante.setText(String.valueOf(item.getID_restaurante()));
         holder.lblNombre.setText(item.getNombre());
         holder.lblDireccion.setText(item.getdireccion());
@@ -72,7 +72,7 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
         holder.lblDiscapacitados.setText(discap);
 
 
-        varID = item.getID_restaurante();
+
 
 
 
@@ -85,11 +85,6 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
             @Override
             public void onClick(View v) {
 
-                //ViewHolder holder2 = (ViewHolder)v.getTag();
-                //varID = Integer.parseInt(holder2.lblIDrestaurante.getText().toString());
-
-                //Intent i = new Intent(v.getContext(),PlatosActivity.class);
-                //i.putExtra("id_restaurante", varID.toString());
 
                 //v.getContext().startActivity(i);
 
@@ -97,11 +92,23 @@ public class CustomAdapter extends ArrayAdapter<ViewRestaurant> {
 
                 try
                 {
-
+/*
                     Intent intent = new Intent(context,  PlatosActivity.class);
-                    intent.putExtra("id_restaurante", varID.toString());
+                    intent.putExtra("id_restaurante", varID);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
+                    */
+
+                    ViewHolder holder2 = (ViewHolder)v.getTag();
+                    varID = holder2.lblIDrestaurante.getText().toString();
+
+                    Intent i = new Intent(v.getContext(),PlatosActivity.class);
+                    i.putExtra("id_restaurante", varID);
+
+                   // i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    v.getContext().startActivity(i);
+
+
 
                 }
                 catch (Exception e)

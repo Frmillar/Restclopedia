@@ -47,22 +47,20 @@ public class PlatosActivity extends AppCompatActivity {
 
     public void start()
     {
-        try
-        {
+
+
+
             bundle = this.getIntent().getExtras();
-           // resp = bundle.getString("id_restaurante");
-            resp = "1";
+            resp = bundle.getString("id_restaurante");
+            //resp = "1";
+
+            Toast toast1 =
+                    Toast.makeText(getApplicationContext(), resp, Toast.LENGTH_LONG);
+            toast1.show();
 
             ConsultaPlatos tarea = new ConsultaPlatos();
             tarea.execute();
-        }
-        catch (Exception e)
-        {
-            Toast toast1 =
-                    Toast.makeText(getApplicationContext(),
-                            e.toString(), Toast.LENGTH_SHORT);
-            toast1.show();
-        }
+
     }
 
     @Override

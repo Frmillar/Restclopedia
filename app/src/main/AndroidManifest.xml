@@ -22,12 +22,12 @@
         </activity>
          <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:label="Buscar Restaurabte"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".PlatosActivity"
-            android:label="qq"
+            android:label="Platos"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.RR" />
@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".NutricionalActivity"
-            android:label="qq"
+            android:label="Información Plato"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.RR" />

@@ -1,13 +1,21 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.*;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.view.*;
 import org.ksoap2.SoapEnvelope;
 import android.os.AsyncTask;
@@ -17,7 +25,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.util.ArrayList;
 
 
-public class PlatosActivity extends AppCompatActivity {
+public class PlatosActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private EditText txtNombre;
     private EditText txtTelefono;
@@ -27,6 +35,9 @@ public class PlatosActivity extends AppCompatActivity {
     private Button btnConsultar;
     private ListView lstPlatos;
     private ListView listaPlatos1;
+    private TextView HeaderPasajero_username;
+    private TextView HeaderPasajero_nombre;
+    private ImageView HeaderPasajero_foto;
 
     Bundle bundle;
     Integer id_restaurante;
@@ -36,7 +47,26 @@ public class PlatosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plato4);
+        setContentView(R.layout.activity_platos);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_platos);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+
+        View headView = navigationView.getHeaderView(0);
+
+        HeaderPasajero_nombre = (TextView)headView.findViewById(R.id.HeaderUser_username);
+        HeaderPasajero_username = (TextView)headView.findViewById(R.id.HeaderUser_nombre);
+        HeaderPasajero_foto = (ImageView)headView.findViewById(R.id.HeaderUser_foto);
+        HeaderPasajero_username.setText("Usuario");
+        HeaderPasajero_nombre.setText("Nombre");
+        HeaderPasajero_foto.setImageResource(R.drawable.user);
 
 
         listaPlatos1 = (ListView) findViewById(R.id.platosListView);
@@ -78,11 +108,26 @@ public class PlatosActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.salir){
+            Intent LoginActivity = new Intent(this, LoginActivity.class);
+            startActivity(LoginActivity);
+        }
+        else if (id == R.id.buscarrestaurante){
+            Intent MainActivity = new Intent(this, MainActivity.class);
+            startActivity(MainActivity);
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
 
@@ -95,8 +140,8 @@ public class PlatosActivity extends AppCompatActivity {
             boolean resul = true;
 
             final String NAMESPACE = "http://tempuri.org/";
-            //final String URL="https://webapplication2-qj7.conveyor.cloud/WebService1.asmx";
-            final String URL="http://192.168.0.2:8083/WebService1.asmx";
+            final String URL="https://webapplication-tb6.conveyor.cloud/WebService1.asmx";
+            //final String URL="http://192.168.0.2:8083/WebService1.asmx";
             final String METHOD_NAME = "Platos";
             final String SOAP_ACTION = "http://tempuri.org/Platos";
 

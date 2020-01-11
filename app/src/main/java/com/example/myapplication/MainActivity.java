@@ -1,13 +1,21 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.*;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.view.*;
 import org.ksoap2.SoapEnvelope;
 import android.os.AsyncTask;
@@ -17,7 +25,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private EditText txtNombre;
     private EditText txtTelefono;
@@ -27,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btnConsultar;
     private ListView lstClientes;
     private ListView listaRestaurant1;
-
+    private TextView HeaderPasajero_username;
+    private TextView HeaderPasajero_nombre;
+    private ImageView HeaderPasajero_foto;
 
 
 
@@ -43,20 +53,25 @@ public class MainActivity extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
 
-        
-        setContentView(R.layout.activity_main);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+
+        View headView = navigationView.getHeaderView(0);
+
+        HeaderPasajero_nombre = (TextView)headView.findViewById(R.id.HeaderUser_username);
+        HeaderPasajero_username = (TextView)headView.findViewById(R.id.HeaderUser_nombre);
+        HeaderPasajero_foto = (ImageView)headView.findViewById(R.id.HeaderUser_foto);
+        HeaderPasajero_username.setText("Usuario");
+        HeaderPasajero_nombre.setText("Nombre");
+        HeaderPasajero_foto.setImageResource(R.drawable.user);
 
         listaRestaurant1 = (ListView) findViewById(R.id.customListView);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         lstClientes = findViewById(R.id.customListView);
@@ -78,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,14 +112,24 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
 
+        if (id == R.id.salir){
+            Intent LoginActivity = new Intent(this, LoginActivity.class);
+            startActivity(LoginActivity);
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
     private class TareaWSConsulta extends AsyncTask<String,Integer,Boolean> {
 
@@ -118,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
             {
 
             final String NAMESPACE = "http://tempuri.org/";
-            //final String URL="https://webapplication2-qj7.conveyor.cloud/WebService1.asmx";
-            final String URL="http://192.168.0.2:8083/WebService1.asmx";
+            final String URL="https://webapplication-tb6.conveyor.cloud/WebService1.asmx";
+            //final String URL="http://192.168.0.2:8083/WebService1.asmx";
             final String METHOD_NAME = "ListaRestaurant";
             final String SOAP_ACTION = "http://tempuri.org/ListaRestaurant";
 

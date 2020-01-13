@@ -145,8 +145,8 @@ public class NutricionalActivity extends AppCompatActivity implements Navigation
             boolean resul = true;
 
             final String NAMESPACE = "http://tempuri.org/";
-            final String URL="https://webapplication-tb6.conveyor.cloud/WebService1.asmx";
-            //final String URL="http://192.168.0.2:8083/WebService1.asmx";
+            //final String URL="https://webapplication-tb6.conveyor.cloud/WebService1.asmx";
+            final String URL="http://192.168.0.2:8083/WebService1.asmx";
             final String METHOD_NAME = "Nutricional";
             final String SOAP_ACTION = "http://tempuri.org/Nutricional";
 

@@ -37,7 +37,7 @@
                 android:id="@+id/txtIngredientesTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="55dp"
                 android:layout_marginLeft="5dp"
                 android:text="Ingredientes"
                 android:textSize="20sp" />
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="85dp"
                 android:text="Lista de ingredientes"
                 android:textSize="15sp" />
 
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="110dp"
                 android:text="Información nutricional"
                 android:textSize="20sp" />
 

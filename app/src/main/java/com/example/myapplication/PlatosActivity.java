@@ -71,6 +71,8 @@ public class PlatosActivity extends AppCompatActivity implements NavigationView.
 
         listaPlatos1 = (ListView) findViewById(R.id.platosListView);
 
+
+
         start();
 
     }
@@ -140,8 +142,8 @@ public class PlatosActivity extends AppCompatActivity implements NavigationView.
             boolean resul = true;
 
             final String NAMESPACE = "http://tempuri.org/";
-            final String URL="https://webapplication-tb6.conveyor.cloud/WebService1.asmx";
-            //final String URL="http://192.168.0.2:8083/WebService1.asmx";
+           // final String URL="https://webapplication-tb6.conveyor.cloud/WebService1.asmx";
+            final String URL="http://192.168.0.2:8083/WebService1.asmx";
             final String METHOD_NAME = "Platos";
             final String SOAP_ACTION = "http://tempuri.org/Platos";
 
@@ -214,6 +216,8 @@ public class PlatosActivity extends AppCompatActivity implements NavigationView.
 
                     listaPlatos1 = (ListView) findViewById(R.id.platosListView);
                     listaPlatos1.setAdapter(adaptador);
+
+
 
                 }
                 else

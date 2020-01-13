@@ -61,11 +61,13 @@ public class PlatosAdapter extends ArrayAdapter<ViewPlatos> {
 
         //varID = item.getid_plato();
 
+
+
 //*********************
 
-        holder.lbl_nombre.setTag(holder);
+        holder.lbl_descripcion.setTag(holder);
 
-        holder.lbl_nombre.setOnClickListener(new View.OnClickListener() {
+        holder.lbl_descripcion.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

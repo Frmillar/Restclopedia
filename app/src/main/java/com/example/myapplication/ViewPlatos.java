@@ -30,7 +30,7 @@ public class ViewPlatos {
         return id_restaurante;
     }
     public Integer getValor() {
-        return id_plato;
+        return valor;
     }
     public String getNombre() { return nombre; }
     public String getDescripcion() {

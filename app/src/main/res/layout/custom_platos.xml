@@ -22,27 +22,19 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/id_plato_plato"
+            android:id="@+id/descripcion_plato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="id_plato"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/id_restaurante_plato"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="id_restaurante"
+            android:text="desc"
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/nombre_plato"
+            android:id="@+id/tipo_plato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="nom"
+            android:text="tipo"
             android:textSize="15sp" />
 
         <TextView
@@ -54,19 +46,35 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/descripcion_plato"
+            android:id="@+id/id_plato_plato"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="desc"
-            android:textSize="15sp" />
+            android:text="id_plato"
+            android:textSize="18sp" />
+
         <TextView
-            android:id="@+id/tipo_plato"
+            android:id="@+id/id_restaurante_plato"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="tipo"
+            android:text="id_restaurante"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/nombre_plato"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="nom"
+            android:textSize="15sp" />
+
+
+
+
 
     </LinearLayout>
 
